@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PML ÉDITIONS | Patrick Mbuyi Lambert</title>
+<!-- Polices Google Fonts Modernes et Élégantes -->
+<link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+<link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+<link href="[https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap)" rel="stylesheet">
+<style>
+/* VARIABLES ET DESIGN SYSTEME */
+:root {
+--bg-cream: #FDFBF7;
+--bg-white: #FFFFFF;
+--text-dark: #1A1A1A;
+--text-muted: #555555;
+--accent-gold: #C5A059;
+--accent-gold-light: #F4EBE1;
+--border-color: #E2DACD;
+--font-title: 'Playfair Display', Georgia, serif;
+--font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+html {
+scroll-behavior: smooth;
+}
+body {
+background-color: var(--bg-cream);
+color: var(--text-dark);
+font-family: var(--font-body);
+line-height: 1.7;
+-webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+font-family: var(--font-title);
+font-weight: 700;
+color: var(--text-dark);
+}
+a {
+text-decoration: none;
+color: inherit;
+}
+/* NAVIGATION */
+header {
+position: sticky;
+top: 0;
+background-color: rgba(253, 251, 247, 0.95);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid var(--border-color);
+z-index: 1000;
+padding: 1rem 5%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+font-family: var(--font-title);
+font-size: 1.5rem;
+font-weight: 700;
+letter-spacing: 1px;
+color: var(--text-dark);
+}
+.logo span {
+color: var(--accent-gold);
+}
+nav ul {
+display: flex;
+list-style: none;
+gap: 2rem;
+}
+nav a {
+font-size: 0.95rem;
+font-weight: 500;
+transition: color 0.3s;
+}
+nav a:hover {
+color: var(--accent-gold);
+}
+/* SECTION BANNIÈRE (HERO) */
+.hero {
+padding: 6rem 5% 4rem;
+text-align: center;
+max-width: 900px;
+margin: 0 auto;
+}
+.hero-subtitle {
+text-transform: uppercase;
+letter-spacing: 3px;
+font-size: 0.85rem;
+color: var(--accent-gold);
+font-weight: 600;
+margin-bottom: 1rem;
+}
+.hero h1 {
+font-size: 3rem;
+line-height: 1.2;
+margin-bottom: 1.5rem;
+}
+.hero p {
+font-size: 1.15rem;
+color: var(--text-muted);
+margin-bottom: 2rem;
+}
+/* BOUTONS */
+.btn {
+display: inline-block;
+padding: 0.95rem 2rem;
+border-radius: 4px;
+font-weight: 600;
+font-size: 0.95rem;
+transition: all 0.3s ease;
+cursor: pointer;
+}
+.btn-primary {
+background-color: var(--text-dark);
+color: var(--bg-white);
+border: 1px solid var(--text-dark);
+}
+.btn-primary:hover {
+background-color: var(--accent-gold);
+border-color: var(--accent-gold);
+}
+.btn-whatsapp {
+background-color: #25D366;
+color: white;
+border: 1px solid #25D366;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+}
+.btn-whatsapp:hover {
+background-color: #1EBE5D;
+}
+/* CATALOGUE */
+.section-title {
+text-align: center;
+font-size: 2.2rem;
+margin-bottom: 3rem;
+position: relative;
+}
+.section-title::after {
+content: '';
+display: block;
+width: 60px;
+height: 2px;
+background-color: var(--accent-gold);
+margin: 1rem auto 0;
+}
+.catalogue {
+padding: 4rem 5%;
+max-width: 1200px;
+margin: 0 auto;
+}
+.books-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 3rem;
+}
+.book-card {
+background: var(--bg-white);
+border: 1px solid var(--border-color);
+border-radius: 8px;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+transition: transform 0.3s, box-shadow 0.3s;
+}
+.book-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+}
+.book-cover-wrapper {
+background-color: var(--accent-gold-light);
+height: 380px;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1.5rem;
+border-bottom: 1px solid var(--border-color);
+}
+.book-cover {
+max-height: 100%;
+max-width: 100%;
+object-fit: contain;
+box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+border-radius: 4px;
+}
+.book-info {
+padding: 2rem;
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+}
+.book-title {
+font-size: 1.5rem;
+margin-bottom: 0.5rem;
+}
+.book-subtitle {
+font-size: 0.9rem;
+font-style: italic;
+color: var(--accent-gold);
+margin-bottom: 1rem;
+}
+.book-price {
+font-weight: 700;
+font-size: 1.25rem;
+margin-bottom: 1rem;
+}
+.book-desc {
+color: var(--text-muted);
+font-size: 0.95rem;
+margin-bottom: 1.5rem;
+flex-grow: 1;
+}
+/* FICHE DÉTAILLÉE */
+.book-details {
+border-top: 1px solid var(--border-color);
+padding-top: 1.5rem;
+margin-top: 1rem;
+}
+details {
+margin-bottom: 0.8rem;
+}
+summary {
+font-weight: 600;
+cursor: pointer;
+color: var(--text-dark);
+padding: 0.5rem 0;
+outline: none;
+}
+summary:hover {
+color: var(--accent-gold);
+}
+.details-content {
+padding: 1rem 0;
+font-size: 0.9rem;
+color: var(--text-muted);
+}
+.toc-list {
+list-style-type: none;
+padding-left: 0;
+}
+.toc-list li {
+padding: 0.4rem 0;
+border-bottom: 1px dashed var(--border-color);
+}
+.review-box {
+background: var(--bg-cream);
+padding: 1rem;
+border-left: 3px solid var(--accent-gold);
+margin-top: 0.5rem;
+font-style: italic;
+}
+/* SECTION AUTEUR */
+.author-section {
+background-color: var(--bg-white);
+border-top: 1px solid var(--border-color);
+border-bottom: 1px solid var(--border-color);
+padding: 5rem 5%;
+}
+.author-container {
+max-width: 1000px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 2fr;
+gap: 4rem;
+align-items: center;
+}
+.author-photo-container {
+text-align: center;
+}
+.author-photo {
+width: 100%;
+max-width: 300px;
+border-radius: 8px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+border: 1px solid var(--border-color);
+}
+.author-bio h2 {
+font-size: 2.2rem;
+margin-bottom: 1rem;
+}
+.author-bio p {
+color: var(--text-muted);
+margin-bottom: 1.2rem;
+}
+/* FOOTER */
+footer {
+background-color: var(--text-dark);
+color: var(--bg-cream);
+padding: 3rem 5%;
+text-align: center;
+font-size: 0.9rem;
+}
+footer p {
+opacity: 0.8;
+}
+@media (max-width: 768px) {
+.author-container {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+.hero h1 {
+font-size: 2.2rem;
+}
+header {
+flex-direction: column;
+gap: 1rem;
+}
+}
+</style>
+</head>
+<body>
+<!-- EN-TÊTE / NAVIGATION -->
+<header>
+<div class="logo">PML <span>ÉDITIONS</span></div>
+<nav>
+<ul>
+<li><a href="#catalogue">Livres</a></li>
+<li><a href="#auteur">L'Auteur</a></li>
+<li><a href="#contact">Commander</a></li>
+</ul>
+</nav>
+</header>
+<!-- SECTION BANIÈRE (HERO) -->
+<section class="hero">
+<div class="hero-subtitle">Maison d'édition littéraire d'inspiration chrétienne</div>
+<h1>Des livres pour comprendre, discerner, éveiller et transformer</h1>
+<p>Découvrez les œuvres de Patrick Mbuyi Lambert. Une écriture authentique pour bâtir sa foi, guérir ses blessures intérieures et restaurer sa vie.</p>
+<a href="#catalogue" class="btn btn-primary">Explorer le catalogue</a>
+</section>
+<!-- SECTION CATALOGUE DES LIVRES -->
+<section id="catalogue" class="catalogue">
+<h2 class="section-title">Catalogue des Livres</h2>
+<div class="books-grid">
+<!-- LIVRE 1 : LE RÉVEIL EST LA PUISSANCE DE LA FEMME -->
+<article class="book-card">
+<div class="book-cover-wrapper">
+<img src="images/reveil-femme.jpg" alt="Le réveil est la puissance de la femme" class="book-cover" onerror="this.src='[https://via.placeholder.com/260x380/F4EBE1/1A1A1A?text=Le+Reveil+est+la+Puissance+de+la+Femme](https://via.placeholder.com/260x380/F4EBE1/1A1A1A?text=Le+Reveil+est+la+Puissance+de+la+Femme)'">
+</div>
+<div class="book-info">
+<h3 class="book-title">Le réveil est la puissance de la femme</h3>
+<div class="book-subtitle">« Femme découvre toi et tu t’aimeras »</div>
+<div class="book-price">15 $</div>
+<p class="book-desc">
+À travers les figures bibliques de Déborah, la Samaritaine, Sarah ou Esther, cet ouvrage offre un guide pratique et spirituel pour se libérer des freins intérieurs et activer la puissance du réveil dans le foyer, l'entrepreneuriat et le leadership.
+</p>
+<div class="book-details">
+<details>
+<summary>Résumé détaillé</summary>
+<div class="details-content">
+Le réveil d'une femme commence par une transformation intérieure. L'auteur aborde sans détour les "ennemis intérieurs" et les freins psychologiques ou spirituels qui empêchent la femme d'avancer. En proposant des clés concrètes, ce livre montre comment l'indépendance par le travail, la prière d'intercession et le leadership permettent de construire un véritable épanouissement personnel.
+</div>
+</details>
+<details>
+<summary>Table des matières</summary>
+<div class="details-content">
+<ul class="toc-list">
+<li>• La Femme Leader – Déborah (p. 11)</li>
+<li>• La Femme qui Impacte Spirituellement – La Samaritaine (p. 19)</li>
+<li>• Sarah, l'épouse et la mère des nations (p. 26)</li>
+<li>• La Femme Intercesseur (p. 37)</li>
+<li>• La femme entrepreneur – L'indépendance par le travail (p. 51)</li>
+<li>• La Femme Politique – Esther (p. 61)</li>
+<li>• Les Ennemis Intérieurs – Ce qui freine la femme (p. 75)</li>
+<li>• Se Libérer des Chaînes Invisibles (p. 86)</li>
+<li>• Construire Son Épanouissement et Apporter le Réveil (p. 91)</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Extrait du livre</summary>
+<div class="details-content" style="font-style: italic;">
+« L’histoire de la femme samaritaine nous révèle une vérité puissante : l’impact spirituel d’une femme ne commence pas par l’imitation des hommes, mais par une rencontre authentique avec Jésus... » (Chapitre 2)
+</div>
+</details>
+<details>
+<summary>Avis des lecteurs</summary>
+<div class="details-content">
+<div class="review-box">
+⭐⭐⭐⭐⭐ "Ce livre m'a ouvert les yeux sur ma valeur et ma responsabilité spirituelle. Je le recommande à toutes les femmes."
+
+<strong>— Rosinatte</strong>
+</div>
+</div>
+</details>
+</div>
+
+
+<a href="[https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Le%20réveil%20est%20la%20puissance%20de%20la%20femme](https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Le%20réveil%20est%20la%20puissance%20de%20la%20femme)" target="_blank" class="btn btn-whatsapp">
+Commander sur WhatsApp
+</a>
+</div>
+</article>
+<!-- LIVRE 2 : DISCERNER AVANT D'AIMER -->
+<article class="book-card">
+<div class="book-cover-wrapper">
+<img src="images/discerner-avant-daimer.jpg" alt="Discerner avant d'aimer" class="book-cover" onerror="this.src='[https://via.placeholder.com/260x380/F4EBE1/1A1A1A?text=Discerner+Avant+d%27Aimer](https://via.placeholder.com/260x380/F4EBE1/1A1A1A?text=Discerner+Avant+d%27Aimer)'">
+</div>
+<div class="book-info">
+<h3 class="book-title">Discerner avant d'aimer</h3>
+<div class="book-subtitle">Aimer est un choix, mais discerner est une nécessité.</div>
+<div class="book-price">15 $</div>
+<p class="book-desc">
+Un guide essentiel pour naviguer dans les relations amoureuses avec sagesse et clairvoyance. S'appuyant sur des principes bibliques, cet ouvrage aide à identifier les cœurs dysfonctionnels avant le mariage et à restaurer la vision du couple.
+</p>
+<div class="book-details">
+<details>
+<summary>Résumé détaillé</summary>
+<div class="details-content">
+Structuré en trois parties :
+1. Identifier les relations vouées à l'échec avant le mariage (typologie des cœurs).
+2. Comprendre pourquoi certaines unions échouent malgré le mariage.
+3. Redécouvrir la beauté du mariage et les outils spirituels et pratiques de sa restauration.
+</div>
+</details>
+<details>
+<summary>Table des matières</summary>
+<div class="details-content">
+<ul class="toc-list">
+<li>PARTIE I : Relations qui échouent avant le mariage (Le cœur du mercenaire, de l'amuseur...)</li>
+<li>PARTIE II : Relations qui finissent en échec après le mariage (Blessures négligées...)</li>
+<li>PARTIE III : Le mariage reste un rêve possible (Restaurer ce qui semble brisé...)</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Extrait du livre</summary>
+<div class="details-content" style="font-style: italic;">
+« Le cœur de l'amuseur aime... mais pour s'amuser, pas pour construire. [...] Il aime sans intention sérieuse. Il vit l'instant, pas l'alliance. Une relation avec un amuseur laisse dans l'âme un goût d'illusion... »
+</div>
+</details>
+<details>
+<summary>🎧 Extrait Audio (Bientôt disponible)</summary>
+<div class="details-content">
+<em>L'extrait audio de ce livre sera disponible très prochainement.</em>
+</div>
+</details>
+</div>
+
+
+<a href="[https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Discerner%20avant%20d%27aimer](https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Discerner%20avant%20d%27aimer)" target="_blank" class="btn btn-whatsapp">
+Commander sur WhatsApp
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- SECTION AUTEUR -->
+<section id="auteur" class="author-section">
+<div class="author-container">
+<div class="author-photo-container">
+<img src="images/PML.png" alt="Patrick Mbuyi Lambert" class="author-photo" onerror="this.src='[https://via.placeholder.com/300x400/1A1A1A/FFFFFF?text=Patrick+Mbuyi+Lambert](https://via.placeholder.com/300x400/1A1A1A/FFFFFF?text=Patrick+Mbuyi+Lambert)'">
+</div>
+<div class="author-bio">
+<h2>Patrick Mbuyi Lambert</h2>
+<p><strong>Patrick Mbuyi Lambert</strong> est un auteur de littérature d'inspiration chrétienne. Sa mission littéraire est claire : rendre la sagesse de Dieu simple et praticable au quotidien pour répondre aux défis de la vie.</p>
+<p>L'homme derrière la plume a été forgé par la résilience. Élevé les onze premières années de sa vie sans père, il a été témoin des difficultés et de la dépression de sa mère – son premier héros. C'est dans sa rencontre avec Jésus-Christ, durant son adolescence, qu'il a trouvé une guérison profonde de ses blessures d'enfance.</p>
+<p>Aujourd'hui, passionné par la guérison intérieure, les dynamiques du couple et le mariage, il puise dans son expérience de foi pour offrir des clés pratiques à tous ceux qui cherchent à se reconstruire.</p>
+<p><em>Ses ouvrages notables : Courir sans fardeau, Reconstruire après les erreurs, Femme prépare-toi au mariage, Epiousios le pain quotidien, L’ennemi du progrès, Le réveil d’Asaph, Noël au réveil?, etc.</em></p>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer id="contact">
+<p><strong>PML ÉDITIONS</strong> — Édition & Littérature d'inspiration chrétienne</p>
+<p style="margin-top: 0.5rem;">Commandes et renseignements : +243 98 36 82 450</p>
+<p style="margin-top: 1.5rem; font-size: 0.8rem;">© 2026 PML Éditions. Tous droits réservés.</p>
+</footer>
+</body>
+</html>
