@@ -1,677 +1,531 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PML Éditions | Littérature d'Inspiration Chrétienne</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome pour les icônes -->
+    <title>PML Éditions | Littérature d'Inspiration Chrétienne - Patrick Mbuyi Lambert</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B1325',
+                            900: '#070C18',
+                            950: '#04070F',
+                        },
+                        gold: {
+                            400: '#E6C065',
+                            500: '#D4AF37',
+                            600: '#B8860B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary: #0f172a; /* Bleu Nuit Profond */
-            --accent: #d4af37; /* Or Élégant */
-            --accent-hover: #b38f27;
-            --bg-light: #f8fafc;
-            --text-main: #334155;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B8 0%, #D4AF37 50%, #9A7410 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
         }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-main);
-            background-color: var(--bg-light);
-            line-height: 1.7;
+        .book-3d-shadow {
+            box-shadow: -15px 15px 30px rgba(0,0,0,0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
         }
-
-        h1, h2, h3, .brand-title {
-            font-family: 'Playfair Display', serif;
+        .book-3d-shadow:hover {
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: -20px 25px 40px rgba(0,0,0,0.6), 0 0 25px rgba(212, 175, 55, 0.4);
         }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 5%;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        .nav-btn {
-            background-color: var(--accent);
-            color: var(--primary) !important;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600 !important;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-        }
-
-        .nav-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('PML2.jpg') center/cover no-repeat;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 8rem 5% 5rem 5%;
-            color: var(--white);
-        }
-
-        .hero-badge {
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--accent);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 4vw, 3.8rem);
-            max-width: 900px;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--accent);
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            max-width: 700px;
-            color: #cbd5e1;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-3px);
-        }
-
-        /* --- CATALOGUE SECTION --- */
-        .catalogue-section {
-            padding: 6rem 8%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 4rem;
-            font-size: 1.1rem;
-        }
-
-        article {
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 3rem;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            align-items: start;
-            border: 1px solid #e2e8f0;
-            transition: var(--transition);
-        }
-
-        article:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            transform: translateY(-5px);
-        }
-
-        .book-img-container {
-            position: relative;
-            text-align: center;
-        }
-
-        .book-img-container img {
-            width: 100%;
-            max-width: 280px;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
-
-        .book-img-container img:hover {
-            transform: scale(1.02);
-        }
-
-        .book-price {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--accent);
-            padding: 0.4rem 1rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin: 1rem 0;
-        }
-
-        .book-content h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .book-subtitle {
-            font-style: italic;
-            color: var(--accent-hover);
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-        }
-
-        .book-desc {
-            color: var(--text-main);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        /* --- DETAILS & ACCORDEONS MODERNES --- */
-        details {
-            background: var(--bg-light);
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            margin-bottom: 0.8rem;
-            padding: 0.8rem 1.2rem;
-            transition: var(--transition);
-        }
-
-        details[open] {
-            background: var(--white);
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-
-        summary {
-            font-weight: 600;
-            color: var(--primary);
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        summary::after {
-            content: '\f107';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--accent);
-            transition: var(--transition);
-        }
-
-        details[open] summary::after {
-            transform: rotate(180deg);
-        }
-
-        details div {
-            margin-top: 0.8rem;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 0.8rem;
-        }
-
-        ul {
-            padding-left: 1.2rem;
-        }
-
-        ul li {
-            margin-bottom: 0.4rem;
-        }
-
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background-color: #25d366;
-            color: var(--white);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-            transition: var(--transition);
-        }
-
-        .whatsapp-btn:hover {
-            background-color: #20ba5a;
-            transform: translateY(-2px);
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-section {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 6rem 8%;
-        }
-
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-img img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border: 3px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .about-text p {
-            color: #cbd5e1;
-            margin-bottom: 1.2rem;
-            font-size: 1.05rem;
-        }
-
-        .about-text em {
-            color: var(--accent);
-            display: block;
-            margin-top: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #090d16;
-            color: #94a3b8;
-            text-align: center;
-            padding: 3rem 5%;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        footer strong {
-            color: var(--white);
-        }
-
-        footer p {
-            margin-bottom: 0.6rem;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 968px) {
-            article {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 2rem;
-            }
-            .book-img-container img {
-                margin: 0 auto;
-            }
-            .about-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            nav ul {
-                display: none; /* Simplification mobile, le menu peut être amélioré si besoin */
-            }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
     </style>
 </head>
-<body>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased selection:bg-gold-500 selection:text-navy-950">
 
-  <!-- HEADER -->
-  <header>
-    <a href="#" class="logo">PML <span>ÉDITIONS</span></a>
-    <nav>
-      <ul>
-        <li><a href="#catalogue">Livres</a></li>
-        <li><a href="#auteur">L'Auteur</a></li>
-        <li><a href="https://wa.me/243983682450" target="_blank" class="nav-btn"><i class="fa-brands fa-whatsapp"></i> Commander</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-gold-500/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full gold-gradient-bg flex items-center justify-center text-navy-950 font-serif font-bold text-xl shadow-lg">
+                    P
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-xl font-bold tracking-wider text-white group-hover:text-gold-400 transition">PML ÉDITIONS</span>
+                    <span class="text-[10px] tracking-widest text-gold-500 uppercase">Inspiration Chrétienne</span>
+                </div>
+            </a>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-badge">Maison d'édition littéraire d'inspiration chrétienne</div>
-    <h1>Des livres pour <span>comprendre</span>, discerner, éveiller et transformer</h1>
-    <p>Découvrez les œuvres de <strong>Patrick Mbuyi Lambert</strong>. Une écriture authentique pour bâtir sa foi, guérir ses blessures intérieures et restaurer sa vie.</p>
-    <div class="hero-cta">
-      <a href="#catalogue" class="btn-primary">Explorer le catalogue</a>
-    </div>
-  </section>
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#hero" class="text-sm font-medium hover:text-gold-400 transition">Accueil</a>
+                <a href="#catalogue" class="text-sm font-medium hover:text-gold-400 transition">Catalogue</a>
+                <a href="#auteur" class="text-sm font-medium hover:text-gold-400 transition">L'Auteur</a>
+                <a href="#temoignages" class="text-sm font-medium hover:text-gold-400 transition">Avis Lecteurs</a>
+            </nav>
 
-  <!-- CATALOGUE SECTION -->
-  <section class="catalogue-section" id="catalogue">
-    <h2 class="section-title">Catalogue des Livres</h2>
-    <p class="section-subtitle">Chaque ouvrage est une clé pour nourrir votre esprit et transformer votre marche quotidienne.</p>
-
-    <!-- LIVRE 1 -->
-    <article>
-      <div class="book-img-container">
-        <img alt="Le réveil est la puissance de la femme" src="couverture.PNG">
-        <div class="book-price">20 $</div>
-      </div>
-      <div class="book-content">
-        <h3>Le réveil est la puissance de la femme</h3>
-        <div class="book-subtitle">« Femme découvre toi et tu t’aimeras »</div>
-        <p class="book-desc">
-          À travers les figures bibliques de Déborah, la Samaritaine, Sarah ou Esther, cet ouvrage offre un guide pratique et spirituel pour se libérer des freins intérieurs et activer la puissance du réveil dans le foyer, l'entrepreneuriat et le leadership.
-        </p>
-
-        <div>
-          <details>
-            <summary>Résumé détaillé</summary>
-            <div>Le réveil d'une femme commence par une transformation intérieure. L'auteur aborde sans détour les "ennemis intérieurs" et les freins psychologiques ou spirituels qui empêchent la femme d'avancer. En proposant des clés concrètes, ce livre montre comment l'indépendance par le travail, la prière d'intercession et le leadership permettent de construire un véritable épanouissement personnel.</div>
-          </details>
-
-          <details>
-            <summary>Table des matières</summary>
-            <div>
-              <ul>
-                <li>• La Femme Leader – Déborah (p. 11)</li>
-                <li>• La Femme qui Impacte Spirituellement – La Samaritaine (p. 19)</li>
-                <li>• Sarah, l'épouse et la mère des nations (p. 26)</li>
-                <li>• La Femme Intercesseur (p. 37)</li>
-                <li>• La femme entrepreneur – L'indépendance par le travail (p. 51)</li>
-                <li>• La Femme Politique – Esther (p. 61)</li>
-                <li>• Les Ennemis Intérieurs – Ce qui freine la femme (p. 75)</li>
-                <li>• Se Libérer des Chaînes Invisibles (p. 86)</li>
-                <li>• Construire Son Épanouissement et Apporter le Réveil (p. 91)</li>
-              </ul>
+            <!-- Quick WhatsApp CTA Header -->
+            <div class="hidden sm:flex items-center">
+                <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20un%20livre" target="_blank" class="gold-gradient-bg text-navy-950 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:opacity-90 transition flex items-center shadow-md">
+                    <i class="fa-brands fa-whatsapp text-base mr-2"></i> Commander
+                </a>
             </div>
-          </details>
 
-          <details>
-            <summary>Extrait du livre</summary>
-            <div>« L’histoire de la femme samaritaine nous révèle une vérité puissante : l’impact spirituel d’une femme ne commence pas par l’imitation des hommes, mais par une rencontre authentique avec Jésus... » (Chapitre 2)</div>
-          </details>
-
-          <details>
-            <summary>Avis des lecteurs</summary>
-            <div>
-              ⭐ 5/5 « Ce livre m’a ouvert les yeux sur ma valeur et ma responsabilité spirituelle. Je le recommande à toutes les femmes. »<br><strong>— Rosinatte</strong>
-            </div>
-          </details>
+            <!-- Mobile Menu Button -->
+            <button id="menuBtn" class="md:hidden text-slate-300 hover:text-gold-400 focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
         </div>
 
-        <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Le%20réveil%20est%20la%20puissance%20de%20la%20femme" target="_blank" class="whatsapp-btn">
-          <i class="fa-brands fa-whatsapp fa-lg"></i> Commander sur WhatsApp
-        </a>
-      </div>
-    </article>
-
-    <!-- LIVRE 2 -->
-    <article>
-      <div class="book-img-container">
-        <img alt="Discerner avant d'aimer" src="Discerner.jpg">
-        <div class="book-price">20 $</div>
-      </div>
-      <div class="book-content">
-        <h3>Discerner avant d'aimer</h3>
-        <div class="book-subtitle">Aimer est un choix, mais discerner est une nécessité.</div>
-        <p class="book-desc">
-          Un guide essentiel pour naviguer dans les relations amoureuses avec sagesse et clairvoyance. S'appuyant sur des principes bibliques, cet ouvrage aide à identifier les cœurs dysfonctionnels avant le mariage et à restaurer la vision du couple.
-        </p>
-
-        <div>
-          <details>
-            <summary>Résumé détaillé</summary>
-            <div>Structuré en trois parties : 1. Identifier les relations vouées à l'échec avant le mariage (typologie des cœurs). 2. Comprendre pourquoi certaines unions échouent malgré le mariage. 3. Redécouvrir la beauté du mariage et les outils spirituels et pratiques de sa restauration.</div>
-          </details>
-
-          <details>
-            <summary>Table des matières</summary>
-            <div>
-              <ul>
-                <li>PARTIE I : Relations qui échouent avant le mariage (Le cœur du mercenaire, de l'amuseur...)</li>
-                <li>PARTIE II : Relations qui finissent en échec après le mariage</li>
-                <li>PARTIE III : Le mariage reste un rêve possible</li>
-              </ul>
-            </div>
-          </details>
-
-          <details>
-            <summary>Extrait du livre</summary>
-            <div>« Le cœur de l'amuseur aime... mais pour s'amuser, pas pour construire. Il vit l'instant, pas l'alliance. Une relation avec un amuseur laisse dans l'âme un goût d'illusion... »</div>
-          </details>
-
-          <details>
-            <summary>Avis des lecteurs</summary>
-            <div>
-              ⭐ 5/5 « L'amour sans discernement, c'est l'amour à l'aveugle. Un chef-d'œuvre indispensable pour la jeunesse ! »<br><strong>— Xavier</strong>
-            </div>
-          </details>
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-b border-gold-500/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="block py-2 text-base font-medium hover:text-gold-400">Accueil</a>
+            <a href="#catalogue" class="block py-2 text-base font-medium hover:text-gold-400">Catalogue</a>
+            <a href="#auteur" class="block py-2 text-base font-medium hover:text-gold-400">L'Auteur</a>
+            <a href="#temoignages" class="block py-2 text-base font-medium hover:text-gold-400">Avis Lecteurs</a>
+            <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20un%20livre" target="_blank" class="inline-block w-full text-center gold-gradient-bg text-navy-950 py-3 rounded-xl font-bold mt-2">
+                <i class="fa-brands fa-whatsapp mr-2"></i> Commander sur WhatsApp
+            </a>
         </div>
+    </header>
 
-        <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Discerner%20avant%20d'aimer" target="_blank" class="whatsapp-btn">
-          <i class="fa-brands fa-whatsapp fa-lg"></i> Commander sur WhatsApp
-        </a>
-      </div>
-    </article>
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-b from-navy-900 via-navy-950 to-navy-950">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-    <!-- LIVRE 3 -->
-    <article>
-      <div class="book-img-container">
-        <img alt="Reconstruire après les erreurs" src="Reconstruire.jpg">
-        <div class="book-price">20 $</div>
-      </div>
-      <div class="book-content">
-        <h3>Reconstruire après les erreurs</h3>
-        <div class="book-subtitle">La grâce divine et la sagesse pratique pour se relever après une chute</div>
-        <p class="book-desc">
-          Un message vibrant d’espoir et de restauration qui démontre que nos erreurs ne définissent pas notre avenir. À travers des exemples bibliques, cet ouvrage offre des clés pour se pardonner et rebâtir sa vie.
-        </p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-gold-500/10 border border-gold-500/30 px-4 py-1.5 rounded-full">
+                        <i class="fa-solid fa-book-open text-gold-400 text-xs"></i>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-gold-400">Maison d'édition littéraire chrétienne</span>
+                    </div>
 
-        <div>
-          <details>
-            <summary>Résumé détaillé</summary>
-            <div>Quelle que soit la gravité de nos fautes, personne n’est jamais au-delà de la rédemption. En s'appuyant sur les parcours d'Abraham et de David, ce livre propose des stratégies pratiques pour gérer la culpabilité et retrouver sa paix intérieure.</div>
-          </details>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Des livres pour <span class="gold-gradient-text">comprendre</span>, discerner, éveiller et transformer.
+                    </h1>
 
-          <details>
-            <summary>Table des matières</summary>
-            <div>
-              <ul>
-                <li>• La nature humaine (p. 7)</li>
-                <li>• Abraham, ses erreurs et ses victoires (p. 19)</li>
-                <li>• David, ses erreurs et ses victoires (p. 33)</li>
-                <li>• Les 15 erreurs fréquentes commises par les humains (p. 50)</li>
-                <li>• Le chemin du pardon et du renouveau (p. 84)</li>
-              </ul>
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Découvrez les œuvres de <strong>Patrick Mbuyi Lambert</strong>. Une écriture authentique pour bâtir sa foi, guérir ses blessures intérieures et restaurer sa vie.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#catalogue" class="w-full sm:w-auto px-8 py-4 rounded-xl gold-gradient-bg text-navy-950 font-bold text-center shadow-lg shadow-gold-500/10 hover:shadow-gold-500/25 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-compass mr-2"></i> Explorer le catalogue
+                        </a>
+                        <a href="#auteur" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-slate-700 bg-navy-900/60 hover:bg-navy-800 text-white font-medium text-center transition">
+                            Découvrir l'Auteur
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Showcase (Livre Phare) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 opacity-20 blur-xl"></div>
+                        <div class="relative glass-card rounded-2xl p-6 text-center shadow-2xl">
+                            <span class="inline-block bg-gold-500/20 text-gold-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">Œuvre Phare</span>
+                            <img src="couverture.PNG" alt="Le réveil est la puissance de la femme" class="w-48 h-auto mx-auto rounded-md book-3d-shadow mb-6 object-cover">
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Le réveil est la puissance de la femme</h3>
+                            <p class="text-xs text-gold-400 italic mb-4">« Femme découvre toi et tu t’aimeras »</p>
+                            <a href="#catalogue" class="inline-flex items-center text-sm text-gold-400 hover:text-gold-300 font-semibold">
+                                Voir les détails <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </details>
-
-          <details>
-            <summary>Extrait du livre</summary>
-            <div>« Ce n'est pas l'erreur qui détermine notre avenir, mais la manière dont nous y réagissons. La grâce divine est toujours à portée de main. »</div>
-          </details>
-
-          <details>
-            <summary>Avis des lecteurs</summary>
-            <div>
-              ⭐ 5/5 « Ce livre m'a permis de comprendre le sens réel de la grâce de Dieu, totalement indépendante de nos fautes. »<br><strong>— Sylvain 🇨🇩</strong>
-            </div>
-          </details>
         </div>
+    </section>
 
-        <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Reconstruire%20apres%20les%20erreurs" target="_blank" class="whatsapp-btn">
-          <i class="fa-brands fa-whatsapp fa-lg"></i> Commander sur WhatsApp
-        </a>
-      </div>
-    </article>
-
-    <!-- LIVRE 4 -->
-    <article>
-      <div class="book-img-container">
-        <img alt="Courir sans fardeau" src="Courir.PNG">
-        <div class="book-price">20 $</div>
-      </div>
-      <div class="book-content">
-        <h3>Courir sans fardeau</h3>
-        <div class="book-subtitle">Comprendre la chute, briser le cycle et marcher dans la liberté</div>
-        <p class="book-desc">
-          Un livre qui aide à comprendre les mécanismes de la chute, à identifier les occasions de faiblesse et à retrouver une véritable liberté en Christ.
-        </p>
-
-        <div>
-          <details>
-            <summary>Résumé détaillé</summary>
-            <div>Aborde avec franchise les luttes qui enferment dans des cycles de chute. L'auteur conduit le lecteur du constat de la difficulté vers la conversion, la restauration et une marche victorieuse.</div>
-          </details>
-
-          <details>
-            <summary>Table des matières</summary>
-            <div>
-              <ul>
-                <li>• Courir libre : Rejeter le fardeau et le péché (p. 11)</li>
-                <li>• Comprendre la pornographie en profondeur (p. 27)</li>
-                <li>• Couper les occasions de chute – La vraie intégrité (p. 47)</li>
-                <li>• Recevoir une révélation personnelle de Jésus-Christ (p. 81)</li>
-              </ul>
+    <!-- CATALOGUE SECTION -->
+    <section id="catalogue" class="py-24 bg-navy-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">Catalogue des Livres</h2>
+                <div class="w-16 h-1 gold-gradient-bg mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-400 text-base">Chaque ouvrage est une clé pour nourrir votre esprit et transformer votre marche quotidienne.</p>
             </div>
-          </details>
 
-          <details>
-            <summary>Extrait du livre</summary>
-            <div>« La liberté exige parfois des décisions courageuses pour protéger notre cœur et notre relation avec Dieu. »</div>
-          </details>
+            <div class="space-y-12">
+                
+                <!-- LIVRE 1 : Le réveil est la puissance de la femme -->
+                <div class="glass-card rounded-2xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border border-gold-500/20">
+                    <div class="lg:col-span-4 text-center">
+                        <img src="couverture.PNG" alt="Le réveil est la puissance de la femme" class="w-56 h-auto mx-auto rounded-lg book-3d-shadow mb-4 object-cover">
+                        <div class="inline-block bg-gold-500/20 text-gold-400 px-4 py-1.5 rounded-full font-bold text-lg mt-2">20 $</div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-4">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold uppercase tracking-wider">Guide pratique et spirituel</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">Le réveil est la puissance de la femme</h3>
+                            <p class="text-gold-300 italic font-medium mt-1">« Femme découvre toi et tu t’aimeras »</p>
+                        </div>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            À travers les figures bibliques de Déborah, la Samaritaine, Sarah ou Esther, cet ouvrage offre un guide pratique et spirituel pour se libérer des freins intérieurs et activer la puissance du réveil dans le foyer, l'entrepreneuriat et le leadership.
+                        </p>
 
-          <details>
-            <summary>Avis des lecteurs</summary>
-            <div>
-              ⭐ 5/5 « Un livre puissant qui nous conduit vers la responsabilité et une véritable liberté en Christ. »<br><strong>— Sandra 🇫🇷</strong>
+                        <!-- Accordéons de détails -->
+                        <div class="space-y-2 pt-2">
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Résumé détaillé</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <p class="mt-3 text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+                                    Le réveil d'une femme commence par une transformation intérieure. L'auteur aborde sans détour les "ennemis intérieurs" et les freins psychologiques ou spirituels qui empêchent la femme d'avancer. En proposant des clés concrètes, ce livre montre comment l'indépendance par le travail, la prière d'intercession et le leadership permettent de construire un véritable épanouissement personnel.
+                                </p>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Table des matières</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <ul class="mt-3 text-slate-400 space-y-1.5 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <li>• La Femme Leader – Déborah (p. 11)</li>
+                                    <li>• La Femme qui Impacte Spirituellement – La Samaritaine (p. 19)</li>
+                                    <li>• Sarah, l'épouse et la mère des nations (p. 26)</li>
+                                    <li>• La Femme Intercesseur (p. 37)</li>
+                                    <li>• La femme entrepreneur – L'indépendance par le travail (p. 51)</li>
+                                    <li>• La Femme Politique – Esther (p. 61)</li>
+                                    <li>• Les Ennemis Intérieurs – Ce qui freine la femme (p. 75)</li>
+                                    <li>• Se Libérer des Chaînes Invisibles (p. 86)</li>
+                                    <li>• Construire Son Épanouissement et Apporter le Réveil (p. 91)</li>
+                                </ul>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Extrait & Avis des lecteurs</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <div class="mt-3 text-slate-400 space-y-3 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <p class="italic">« L’histoire de la femme samaritaine nous révèle une vérité puissante : l’impact spirituel d’une femme ne commence pas par l’imitation des hommes, mais par une rencontre authentique avec Jésus... »</p>
+                                    <div class="bg-navy-950 p-3 rounded-lg border border-slate-800">
+                                        <p class="text-amber-300">⭐⭐⭐⭐⭐ « Ce livre m'a ouvert les yeux sur ma valeur et ma responsabilité spirituelle. Je le recommande à toutes les femmes. »</p>
+                                        <p class="text-right text-xs font-bold text-slate-400 mt-1">— Rosinatte</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="pt-4">
+                            <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Le%20réveil%20est%20la%20puissance%20de%20la%20femme" target="_blank" class="inline-flex items-center justify-center w-full sm:w-auto bg-[#25d366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-xl font-bold shadow-lg transition text-sm">
+                                <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Commander sur WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIVRE 2 : Discerner avant d'aimer -->
+                <div class="glass-card rounded-2xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border border-gold-500/20">
+                    <div class="lg:col-span-4 text-center">
+                        <img src="Discerner.jpg" alt="Discerner avant d'aimer" class="w-56 h-auto mx-auto rounded-lg book-3d-shadow mb-4 object-cover">
+                        <div class="inline-block bg-gold-500/20 text-gold-400 px-4 py-1.5 rounded-full font-bold text-lg mt-2">20 $</div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-4">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold uppercase tracking-wider">Guide Relationnel & Sagesse</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">Discerner avant d'aimer</h3>
+                            <p class="text-gold-300 italic font-medium mt-1">Aimer est un choix, mais discerner est une nécessité.</p>
+                        </div>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Un guide essentiel pour naviguer dans les relations amoureuses avec sagesse et clairvoyance. S'appuyant sur des principes bibliques, cet ouvrage aide à identifier les cœurs dysfonctionnels avant le mariage et à restaurer la vision du couple.
+                        </p>
+
+                        <!-- Accordéons de détails -->
+                        <div class="space-y-2 pt-2">
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Résumé détaillé</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <p class="mt-3 text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+                                    Structuré en trois parties : 1. Identifier les relations vouées à l'échec avant le mariage (typologie des cœurs). 2. Comprendre pourquoi certaines unions échouent malgré le mariage. 3. Redécouvrir la beauté du mariage et les outils spirituels et pratiques de sa restauration.
+                                </p>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Table des matières</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <ul class="mt-3 text-slate-400 space-y-1.5 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <li>• PARTIE I : Relations qui échouent avant le mariage (Le cœur du mercenaire, de l'amuseur...)</li>
+                                    <li>• PARTIE II : Relations qui finissent en échec après le mariage</li>
+                                    <li>• PARTIE III : Le mariage reste un rêve possible (Restaurer ce qui semble brisé)</li>
+                                </ul>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Extrait & Avis des lecteurs</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <div class="mt-3 text-slate-400 space-y-3 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <p class="italic">« Le cœur de l'amuseur aime... mais pour s'amuser, pas pour construire. [...] Il vit l'instant, pas l'alliance. Une relation avec un amuseur laisse dans l'âme un goût d'illusion... »</p>
+                                    <div class="bg-navy-950 p-3 rounded-lg border border-slate-800 space-y-2">
+                                        <p class="text-amber-300">⭐⭐⭐⭐⭐ « Grâce à ce livre, j'ai enfin compris ce qu'était un 'mercenaire' dans une relation. Un chef-d'œuvre ! »<br><strong class="text-slate-300">— Hadassa</strong></p>
+                                        <p class="text-amber-300">⭐⭐⭐⭐⭐ « C'est l'outil qui manquait à notre jeunesse ! L'amour sans discernement, c'est l'amour à l'aveugle. »<br><strong class="text-slate-300">— Xavier</strong></p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="pt-4">
+                            <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Discerner%20avant%20d'aimer" target="_blank" class="inline-flex items-center justify-center w-full sm:w-auto bg-[#25d366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-xl font-bold shadow-lg transition text-sm">
+                                <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Commander sur WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIVRE 3 : Reconstruire après les erreurs -->
+                <div class="glass-card rounded-2xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border border-gold-500/20">
+                    <div class="lg:col-span-4 text-center">
+                        <img src="Reconstruire.jpg" alt="Reconstruire après les erreurs" class="w-56 h-auto mx-auto rounded-lg book-3d-shadow mb-4 object-cover">
+                        <div class="inline-block bg-gold-500/20 text-gold-400 px-4 py-1.5 rounded-full font-bold text-lg mt-2">20 $</div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-4">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold uppercase tracking-wider">Espoir & Restauration</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">Reconstruire après les erreurs</h3>
+                            <p class="text-gold-300 italic font-medium mt-1">La grâce divine et la sagesse pratique pour se relever après une chute</p>
+                        </div>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Un message vibrant d’espoir et de restauration qui démontre que nos erreurs ne définissent pas notre avenir. À travers des exemples bibliques majeurs comme Abraham et David, cet ouvrage offre des clés pour se pardonner et rebâtir sa vie.
+                        </p>
+
+                        <!-- Accordéons de détails -->
+                        <div class="space-y-2 pt-2">
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Résumé détaillé</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <p class="mt-3 text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+                                    Quelle que soit la gravité de nos fautes ou la profondeur de nos chutes, personne n’est jamais au-delà de la rédemption. En s'appuyant sur les parcours d'Abraham et de David, ce livre propose des stratégies pratiques pour gérer le stress et la culpabilité consécutifs aux erreurs, afin de retrouver sa dignité.
+                                </p>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Table des matières</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <ul class="mt-3 text-slate-400 space-y-1.5 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <li>• La nature humaine (p. 7)</li>
+                                    <li>• Abraham, ses erreurs et ses victoires (p. 19)</li>
+                                    <li>• David, ses erreurs et ses victoires (p. 33)</li>
+                                    <li>• Les 15 erreurs fréquentes commises par les humains (p. 50)</li>
+                                    <li>• Le chemin du pardon et du renouveau (p. 84)</li>
+                                    <li>• Le Dieu parfait qui aime les Imparfaits (p. 119)</li>
+                                </ul>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Extrait & Avis des lecteurs</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <div class="mt-3 text-slate-400 space-y-3 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <p class="italic">« Quelle que soit la gravité de nos erreurs, nous ne sommes jamais au-delà de la rédemption. Ce n'est pas l'erreur qui détermine notre avenir, mais la manière dont nous y réagissons. »</p>
+                                    <div class="bg-navy-950 p-3 rounded-lg border border-slate-800">
+                                        <p class="text-amber-300">⭐⭐⭐⭐⭐ « J'ai eu ce livre alors que j'étais dans une situation extrêmement difficile liée à mes propres erreurs. C'est le jour où j'ai su que Dieu m'aimait tel que j'étais. »<br><strong class="text-slate-300">— Antony 🇿🇦</strong></p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="pt-4">
+                            <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Reconstruire%20apres%20les%20erreurs" target="_blank" class="inline-flex items-center justify-center w-full sm:w-auto bg-[#25d366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-xl font-bold shadow-lg transition text-sm">
+                                <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Commander sur WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIVRE 4 : Courir sans fardeau -->
+                <div class="glass-card rounded-2xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border border-gold-500/20">
+                    <div class="lg:col-span-4 text-center">
+                        <img src="Courir.PNG" alt="Courir sans fardeau" class="w-56 h-auto mx-auto rounded-lg book-3d-shadow mb-4 object-cover">
+                        <div class="inline-block bg-gold-500/20 text-gold-400 px-4 py-1.5 rounded-full font-bold text-lg mt-2">20 $</div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-4">
+                        <div>
+                            <span class="text-xs text-gold-400 font-semibold uppercase tracking-wider">Liberté & Victoire en Christ</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">Courir sans fardeau</h3>
+                            <p class="text-gold-300 italic font-medium mt-1">Comprendre la chute, briser le cycle et marcher dans la liberté</p>
+                        </div>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Un livre qui aide à comprendre les mécanismes de la chute, à identifier les occasions de faiblesse et à retrouver une véritable liberté. À travers une approche biblique et pratique, l’auteur conduit le lecteur vers la conversion et la restauration.
+                        </p>
+
+                        <!-- Accordéons de détails -->
+                        <div class="space-y-2 pt-2">
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Résumé détaillé</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <p class="mt-3 text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+                                    Aborde avec franchise les luttes qui peuvent enfermer une personne dans un cycle de chute. L’auteur invite à dépasser une compréhension superficielle pour en découvrir les véritables causes, couper les occasions de chute et développer une intégrité chrétienne authentique.
+                                </p>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Table des matières</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <ul class="mt-3 text-slate-400 space-y-1.5 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <li>• Courir libre : Rejeter le fardeau et le péché (p. 11)</li>
+                                    <li>• Comprendre la pornographie en profondeur (p. 27)</li>
+                                    <li>• Couper les occasions de chute – La vraie intégrité (p. 47)</li>
+                                    <li>• Conversion et liberté véritable (p. 55)</li>
+                                    <li>• Recevoir une révélation personnelle de Jésus-Christ (p. 81)</li>
+                                </ul>
+                            </details>
+
+                            <details class="bg-navy-900/80 border border-slate-700/60 rounded-xl p-4 text-sm text-slate-300">
+                                <summary class="font-semibold text-gold-400 cursor-pointer flex justify-between items-center"><span>Extrait & Avis des lecteurs</span><i class="fa-solid fa-chevron-down text-xs"></i></summary>
+                                <div class="mt-3 text-slate-400 space-y-3 border-t border-slate-800 pt-3 text-xs sm:text-sm">
+                                    <p class="italic">« La liberté exige parfois des décisions courageuses pour protéger notre cœur et notre relation avec Dieu... »</p>
+                                    <div class="bg-navy-950 p-3 rounded-lg border border-slate-800">
+                                        <p class="text-amber-300">⭐⭐⭐⭐⭐ « Ce livre m’a aidée à comprendre que certaines luttes ne se gagnent pas seulement par la volonté. Un livre puissant ! »<br><strong class="text-slate-300">— Priscille 🇨🇩</strong></p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="pt-4">
+                            <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Courir%20sans%20fardeau" target="_blank" class="inline-flex items-center justify-center w-full sm:w-auto bg-[#25d366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-xl font-bold shadow-lg transition text-sm">
+                                <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Commander sur WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </details>
         </div>
+    </section>
 
-        <a href="https://wa.me/243983682450?text=Bonjour,%20je%20souhaite%20commander%20le%20livre%20:%20Courir%20sans%20fardeau" target="_blank" class="whatsapp-btn">
-          <i class="fa-brands fa-whatsapp fa-lg"></i> Commander sur WhatsApp
-        </a>
-      </div>
-    </article>
+    <!-- ABOUT SECTION -->
+    <section id="auteur" class="py-20 bg-navy-900 border-y border-gold-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-gold-500/30 shadow-2xl">
+                            <img src="PML2.jpg" alt="Patrick Mbuyi Lambert" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 glass-card p-4 rounded-xl border border-gold-500/30 shadow-lg hidden sm:block">
+                            <div class="font-serif text-lg font-bold text-gold-400">Patrick Mbuyi Lambert</div>
+                            <div class="text-xs text-slate-400">Auteur & Écrivain</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="text-xs font-semibold text-gold-400 tracking-widest uppercase">L'homme derrière la plume</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Patrick Mbuyi Lambert</h2>
+                    <p class="text-slate-300 leading-relaxed font-light text-base">
+                        <strong>Patrick Mbuyi Lambert</strong> est un auteur de littérature d'inspiration chrétienne. Sa mission littéraire est claire : rendre la sagesse de Dieu simple et praticable au quotidien pour répondre aux défis de la vie.
+                    </p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        L'homme derrière la plume a été forgé par la résilience. Élevé les onze premières années de sa vie sans père, il a été témoin des difficultés et de la dépression de sa mère – son premier héros. C'est dans sa rencontre avec Jésus-Christ, durant son adolescence, qu'il a trouvé une guérison profonde de ses blessures d'enfance.
+                    </p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Aujourd'hui, passionné par la guérison intérieure, les dynamiques du couple et le mariage, il puise dans son expérience de foi pour offrir des clés pratiques à tous ceux qui cherchent à se reconstruire.
+                    </p>
+                    <div class="pt-2">
+                        <p class="text-xs text-gold-400 italic">Ouvrages notables : Courir sans fardeau, Reconstruire après les erreurs, Femme prépare-toi au mariage, Epiousios le pain quotidien, L’ennemi du progrès, Le réveil d’Asaph, etc.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  </section>
+    <!-- TEMOIGNAGES -->
+    <section id="temoignages" class="py-20 bg-navy-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="font-serif text-3xl font-bold text-white mb-3">Avis des Lecteurs</h2>
+                <div class="w-12 h-1 gold-gradient-bg mx-auto rounded-full mb-3"></div>
+                <p class="text-slate-400 text-sm">Ce que pensent nos lecteurs des ouvrages de PML Éditions.</p>
+            </div>
 
-  <!-- ABOUT SECTION -->
-  <section class="about-section" id="auteur">
-    <div class="about-container">
-      <div class="about-img">
-        <img alt="Patrick Mbuyi Lambert" src="PML2.jpg">
-      </div>
-      <div class="about-text">
-        <h2>Patrick Mbuyi Lambert</h2>
-        <p><strong>Patrick Mbuyi Lambert</strong> est un auteur de littérature d'inspiration chrétienne. Sa mission littéraire est claire : rendre la sagesse de Dieu simple et praticable au quotidien pour répondre aux défis de la vie.</p>
-        <p>L'homme derrière la plume a été forgé par la résilience. Élevé sans père les onze premières années de sa vie, il a été témoin des difficultés et de la dépression de sa mère – son premier héros. C'est dans sa rencontre avec Jésus-Christ qu'il a trouvé une guérison profonde.</p>
-        <p>Aujourd'hui, passionné par la guérison intérieure, les dynamiques du couple et le mariage, il puise dans son expérience de foi pour offrir des clés pratiques à tous ceux qui cherchent à se reconstruire.</p>
-        <em>Ses ouvrages notables : Courir sans fardeau, Reconstruire après les erreurs, Femme prépare-toi au mariage, Epiousios le pain quotidien, etc.</em>
-      </div>
-    </div>
-  </section>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl border border-gold-500/10">
+                    <div class="flex text-gold-400 text-xs mb-3 space-x-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-300 italic mb-4">"C'est pour moi le meilleur livre de l'auteur. Grâce à cet ouvrage, j'ai enfin compris le sens réel de la grâce de Dieu."</p>
+                    <div class="text-xs font-bold text-white">Sylvain 🇨🇩</div>
+                </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p><strong>PML ÉDITIONS</strong> — Édition & Littérature d'inspiration chrétienne</p>
-    <p>Commandes et renseignements : +243 98 36 82 450</p>
-    <p>© 2026 PML Éditions. Tous droits réservés.</p>
-  </footer>
+                <div class="glass-card p-6 rounded-2xl border border-gold-500/10">
+                    <div class="flex text-gold-400 text-xs mb-3 space-x-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-300 italic mb-4">"Une vraie révélation ! J'ai réalisé qu'on ne bâtit pas un couple sur de simples émotions, mais grâce au discernement."</p>
+                    <div class="text-xs font-bold text-white">Monica</div>
+                </div>
 
+                <div class="glass-card p-6 rounded-2xl border border-gold-500/10">
+                    <div class="flex text-gold-400 text-xs mb-3 space-x-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-300 italic mb-4">"Lorsque tu lis son livre alors que tu traverses réellement le problème, certaines paroles prennent une puissance extraordinaire."</p>
+                    <div class="text-xs font-bold text-white">Fure 🇨🇩</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 border-t border-gold-500/20 pt-16 pb-12 text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800 text-center md:text-left">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-center md:justify-start space-x-2">
+                        <div class="w-8 h-8 rounded-full gold-gradient-bg flex items-center justify-center text-navy-950 font-serif font-bold text-base">P</div>
+                        <span class="font-serif text-lg font-bold text-white">PML ÉDITIONS</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Édition & Littérature d'inspiration chrétienne.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-white font-semibold mb-4 text-sm">Renseignements & Commandes</h4>
+                    <p class="text-xs text-slate-300 mb-2"><i class="fa-brands fa-whatsapp text-gold-400 mr-2"></i> +243 98 36 82 450</p>
+                    <a href="https://wa.me/243983682450" target="_blank" class="text-xs text-gold-400 hover:underline">Écrire sur WhatsApp direct →</a>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-white font-semibold mb-4 text-sm">Navigation rapide</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#hero" class="hover:text-gold-400 transition">Accueil</a></li>
+                        <li><a href="#catalogue" class="hover:text-gold-400 transition">Catalogue des livres</a></li>
+                        <li><a href="#auteur" class="hover:text-gold-400 transition">L'Auteur</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 PML Éditions. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Mobile Menu -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu) mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
+
 
 
